@@ -7,10 +7,10 @@ NOTE = (
 
 
 def main():
-    out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
-    os.makedirs(out_dir, exist_ok=True)
-    with open(os.path.join(out_dir, "entry.txt"), "w", encoding="utf-8") as fh:
-        fh.write(NOTE)
+    output_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
+    os.makedirs(output_dir, exist_ok=True)
+    with open(os.path.join(output_dir, "entry.txt"), "w", encoding="utf-8") as entry_file:
+        entry_file.write(NOTE)
 
 
 if __name__ == "__main__":
