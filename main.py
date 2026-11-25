@@ -1,13 +1,13 @@
-from pathlib import Path
 import os
 
-ENTRY = "Inventory: pickles behind the jam again. Witness protection is not a storage system."
+ENTRY = "Your milk expired Tuesday. I keep it cold out of respect for the date you chose to ignore."
 
 
-def main() -> None:
-    output_dir = Path(os.environ.get("MAKEFUN_OUTPUT_DIR") or "/output")
-    output_dir.mkdir(parents=True, exist_ok=True)
-    (output_dir / "entry.txt").write_text(ENTRY, encoding="utf-8")
+def main():
+    out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
+    os.makedirs(out_dir, exist_ok=True)
+    with open(os.path.join(out_dir, "entry.txt"), "w", encoding="utf-8") as f:
+        f.write(ENTRY)
 
 
 if __name__ == "__main__":
