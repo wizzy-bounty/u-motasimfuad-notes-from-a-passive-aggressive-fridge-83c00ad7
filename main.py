@@ -1,16 +1,13 @@
+from pathlib import Path
 import os
 
-NOTE = (
-    "Nine days I've guarded your yogurt at exactly 3°C. "
-    "It has outlived whatever you were saving it for."
-)
+ENTRY = "Inventory: pickles behind the jam again. Witness protection is not a storage system."
 
 
-def main():
-    output_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
-    os.makedirs(output_dir, exist_ok=True)
-    with open(os.path.join(output_dir, "entry.txt"), "w", encoding="utf-8") as entry_file:
-        entry_file.write(NOTE)
+def main() -> None:
+    output_dir = Path(os.environ.get("MAKEFUN_OUTPUT_DIR") or "/output")
+    output_dir.mkdir(parents=True, exist_ok=True)
+    (output_dir / "entry.txt").write_text(ENTRY, encoding="utf-8")
 
 
 if __name__ == "__main__":
